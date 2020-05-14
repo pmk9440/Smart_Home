@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #jb-container {
+      margin: 10px auto;
+      padding: 20px;
+      /* border: 1px solid #bcbcbc; */
+      text-align: center;
+    }
+
+    #jb-header {
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #bcbcbc;
+      background-color: white;
+    }
+
+    #jb-content {
+      padding: 20px;
+      margin-bottom: 20px;
+      /* border: 1px solid #bcbcbc; */
+      border-width: 2px;
+      border-radius: 20px;
+      box-shadow: 1px 3px 3px 3px #8c8c8c;
+      background-color: white;
+    }
+
+    .fa-lightbulb {
+      max-width: 100%;
+      font-size: 100px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      height: 5px;
+      /*바 굵기*/
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid #ff4b00;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #ff4b00;
+      cursor: pointer;
+    }
+
+    .huetable {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .statetable {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .statetable td {
+      padding: 5%;
+      text-align: left;
+    }
+    
+    h1{
+      font-family: Georgia, serif;
+      color: #ff4b00;
+    }
+
+    @media (min-width: 481px) {
+      #jb-container {
+        width: 940px;
+      }
+
+      #jb-content {
+        width: 580px;
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+<meta charset="utf-8">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<title>HUE</title>
+
+<body style="background-color: #f4f4f4;">
+  <div id="jb-container">
+    <div id="jb-header">
+      <h1>Good Morning</h1>
+      <hr>
+
+      <form method="get" name="form">
+        <input type="submit" value="hue1" onclick="javascript: form.action='/';" />
+        <input type="submit" value="hue2" onclick="javascript: form.action='/hue2';" />
+        <input type="submit" value="weather" onclick="javascript: form.action='/weather';" />
+        <input type="submit" value="alarm" onclick="javascript: form.action='/alarm';" />
+      </form>
+
+
+      <!-- <form action="/">
+          <input type="submit" value="hue1">
+        </form>
+      
+        <form action="/hue2">
+          <input type="submit" value="hue2">
+        </form>
+      
+        <form action="/weather">
+          <input type="submit" value="날씨 정보">
+        </form> -->
+
+
+      <hr>
+    </div>
+    <div id="jb-content">
+      <h2>Name : <span id="name"></h2>
+
+      <table class="huetable">
+        <tr>
+          <td rowspan="3">
+            <span onclick="onn()">
+              <i class="far fa-lightbulb" id="light_icon"></i>
+            </span>
+          </td>
+          <td>
+            <i class="fas fa-sun" style="color:#666666; padding: 10px;"></i>
+            <input type="range" min="1" max="254" class="slider" id="bright1" disabled="true">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <i class="fas fa-temperature-high" style="color:#666666; padding: 10px;"></i>
+            <input type="range" min="1" max="500" class="slider" id="temperature1" disabled="true">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <i class="fas fa-palette" style="color:#666666; padding: 10px;"></i>
+            <label for="colorWell"></label>
+            <input type="color" value="#ffffff" id="colorWell1" disabled="true"><Br>
+          </td>
+        </tr>
+      </table><br>
+      <table class="statetable">
+        <tr>
+          <td>On/Off</td>
+          <td><span id="on_off"></span></td>
+        </tr>
+
+        <tr>
+          <td>Bright</td>
+          <td><span id="bri">00</td>
+        </tr>
+
+        <tr>
+          <td>Temperature</td>
+          <td><span id="tem">00</td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><input type="submit" value="STATE" name="STATE" class="button button3" id="state1"></td>
+        </tr>
+      </table>
+  </div>
+</body>
+<script type="text/javascript" src="/js/hue1.js"></script>
+</html>

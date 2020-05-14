@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #jb-container {
+      margin: 10px auto;
+      padding: 20px;
+      /* border: 1px solid #bcbcbc; */
+      text-align: center;
+    }
+
+    #jb-header {
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #bcbcbc;
+      background-color: white;
+    }
+
+    #jb-content {
+      padding: 20px;
+      margin-bottom: 20px;
+      /* border: 1px solid #bcbcbc; */
+      border-width: 2px;
+      border-radius: 20px;
+      box-shadow: 1px 3px 3px 3px #8c8c8c;
+      background-color: white;
+    }
+
+
+    h1 {
+      font-family: Georgia, serif;
+      color: #00adb5;
+    }
+
+    .button1{
+      background-color: white;
+      color: black;
+      border: 2px solid #f38181;
+      font-size: 14px;
+      margin: 2px 2px;
+      padding: 5px 13px;
+      box-shadow: 2px 2px 2px #8c8c8c;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .button2{
+      background-color: white;
+      color: black;
+      border: 2px solid #fce38a;
+      font-size: 14px;
+      margin: 2px 2px;
+      padding: 5px 13px;
+      box-shadow: 2px 2px 2px #8c8c8c;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .button3{
+      background-color: white;
+      color: black;
+      border: 2px solid #fce38a;
+      font-size: 14px;
+      margin: 2px 2px;
+      padding: 5px 13px;
+      box-shadow: 2px 2px 2px #8c8c8c;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    @media (min-width: 481px) {
+      #jb-container {
+        width: 940px;
+      }
+
+      #jb-content {
+        width: 580px;
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+<meta charset="utf-8">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script type="text/javascript" src="/js/script.js"></script>
+<title>HUE</title>
+
+<body style="background-color: #f4f4f4;">
+  <div id="jb-container">
+    <div id="jb-header">
+      <h1>Good Morning</h1>
+      <hr>
+
+      <form method="get" name="form">
+        <input type="submit" value="hue1" onclick="javascript: form.action='/';" class="button1" />
+        <input type="submit" value="hue2" onclick="javascript: form.action='/hue2';" class="button1" />
+        <input type="submit" value="weather" onclick="javascript: form.action='/weather';" class="button2" />
+        <input type="submit" value="alarm" onclick="javascript: form.action='/alarm';" class="button3" />
+      </form>
+
+      <hr>
+    </div>
+    <div id="jb-content">
+
+      <form action="/buzzer_on">
+        <input type="submit" value="buzzer_on">
+      </form>
+
+      <br>
+
+      <form action="/buzzer_off">
+        <input type="submit" value="buzzer_off">
+      </form>
+      <br>
+
+      <hr>
+
+      <h2>Alarm Setting</h2>
+
+      <form>
+        <input type="date">
+        <input type="time" value="13:10:20" min="13:00:00" max="15:00:00">
+        <input type="submit" value="저장" class="button3">
+      </form>
+
+      <br><hr>
+
+      <h2>Alarm</h2>
+      
+      <input type="submit" value="삭제" class="button1">
+
+    </div>
+</body>
+
+</html>

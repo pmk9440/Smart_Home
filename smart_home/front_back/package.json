@@ -1,0 +1,24 @@
+{
+  "name": "ec2_1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "mqtt": "^3.0.0",
+    "mysql": "^2.18.1",
+    "nodejs": "0.0.0",
+    "pug": "^2.0.4",
+    "request": "^2.88.2",
+    "utf8": "^3.0.0",
+    "ws": "^7.2.3",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {},
+  "description": ""
+}

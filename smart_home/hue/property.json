@@ -1,0 +1,21 @@
+{
+    "device":"hue",
+    "power":["on", "off"],
+    "color":{
+        "min":0,
+        "max":65535
+    },
+    "saturation":{
+        "min":0,
+        "max":254
+    },
+    "brightness":{
+        "min":0,
+        "max":254
+    },
+    
+    "colorTemperature":{
+        "min":0,
+        "max":500
+    }
+}

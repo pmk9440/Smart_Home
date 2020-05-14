@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #jb-container {
+      margin: 10px auto;
+      padding: 20px;
+      /* border: 1px solid #bcbcbc; */
+      text-align: center;
+    }
+
+    #jb-header {
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #bcbcbc;
+      background-color: white;
+    }
+
+    #jb-content {
+      padding: 20px;
+      margin-bottom: 20px;
+      /* border: 1px solid #bcbcbc; */
+      border-width: 2px;
+      border-radius: 20px;
+      box-shadow: 1px 3px 3px 3px #8c8c8c;
+      background-color: white;
+    }
+
+    .wetable {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .wetable td {
+      padding: 15px;
+      font-size: 130%;
+    }
+    
+    h1{
+      font-family: Georgia, serif;
+      /* color: #00adb5; */
+    }
+
+    .button1{
+      background-color: white;
+      color: black;
+      /* border: 2px solid #f38181; */
+      font-size: 14px;
+      margin: 2px 2px;
+      padding: 5px 13px;
+      box-shadow: 1px 1px 1px #8c8c8c;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .button2{
+      background-color: white;
+      color: black;
+      /* border: 2px solid #fce38a; */
+      font-size: 14px;
+      margin: 2px 2px;
+      padding: 5px 13px;
+      box-shadow: 1px 1px 1px #8c8c8c;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .button3{
+      background-color: white;
+      color: black;
+      /* border: 1px solid #8cc98c; */
+      font-size: 14px;
+      margin: 2px 2px;
+      padding: 5px 13px;
+      box-shadow: 0.5px   #8c8c8c;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    @media (min-width: 481px) {
+      #jb-container {
+        width: 940px;
+      }
+
+      #jb-content {
+        width: 580px;
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+<meta charset="utf-8">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<title>HUE</title>
+
+<body style="background-color: #f4f4f4;">
+  <div id="jb-container">
+    <div id="jb-header">
+      <h1><i class="fas fa-home"></i>
+      HOME</h1>
+      <hr>
+
+      <form method="get" name="form">
+        <input type="submit" value="hue1" onclick="javascript: form.action='/';" class="button1" />
+        <input type="submit" value="hue2" onclick="javascript: form.action='/hue2';" class="button1" />
+        <input type="submit" value="weather" onclick="javascript: form.action='/weather';" class="button2" />
+        <input type="submit" value="alarm" onclick="javascript: form.action='/alarm';" class="button2" />
+      </form>
+
+      <hr>
+    </div>
+    <div id="jb-content">
+      
+      <table class="wetable" >
+        <tr>
+          <td><i class="fas fa-temperature-high"></i></td>
+          <td>온도</td>
+          <td><span id="temperature">22</span></td>
+        </tr>
+        <tr>
+          <td><i class="fas fa-tint"></i></td>
+          <td>습도</td>
+          <td><span id="humidity">22</span></td>
+        </tr>
+        <tr>
+          <td><i class="far fa-sun"></i></td>
+          <td>조도</td>
+          <td><span id="bright">20</span></td>
+        </tr>
+      </table>
+      <br>
+      <form>
+        <input type="submit" value="Home" onclick="javascript: form.action='/Home';" class="button3" />
+      </form>
+  </div>
+</body>
+<script type="text/javascript" src="/js/hue1.js"></script>
+</html>

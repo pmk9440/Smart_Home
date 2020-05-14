@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>hue</title>
+    <style>
+        body {
+            text-align: center;
+            /* background-color: rgb(244, 246, 247); */
+        }
+
+        div.power {
+            background-color: white;
+            border-width: 2px;
+            border-style: solid;
+            border-color: black;
+            border-radius: 20px;
+            padding: 10%;
+            margin: 0px 50px auto;
+            box-shadow: 2px 2px 2px #8c8c8c;
+        }
+    </style>
+</head>
+
+<body>
+<div class="swiper-container">
+
+
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="power">
+                <h1>
+                    <i class="fas fa-home" style="font-size: 150%;">
+                    HOME
+                    </i>
+                </h1>
+                    <br><br>
+                <p>
+                    <i class="fas fa-thermometer-half" style="font-size: 540%;">&nbsp;
+                    <span id="temperature">22°C
+                    </i>
+                </p>
+                    <br>
+                <p>
+                    <i class="fas fa-tint" style="font-size: 540%;">&nbsp;
+                    <span id="humidity">30%
+                    </i>
+                </p>
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <div class="power">
+                <h1>
+                    <i class="fas fa-home" style="font-size: 150%;">
+                    2222
+                    </i>
+                </h1>
+                    <br><br>
+                <p>
+                    <i class="fas fa-thermometer-half" style="font-size: 540%;">&nbsp;
+                    <span id="temperature">22°C
+                    </i>
+                </p>
+                    <br>
+                <p>
+                    <i class="fas fa-tint" style="font-size: 540%;">&nbsp;
+                    <span id="humidity">30%
+                    </i>
+                </p>
+            </div>
+        </div>
+
+
+
+
+
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      
+      <div class="swiper-scrollbar"></div>
+</div>
+<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+</body>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+// 슬라이드를 버튼으로 움직일 수 있습니다.
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+    
+// 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+  },
+
+// 현재 페이지를 나타내는 스크롤이 생깁니다. 클릭하면 이동합니다.
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+  },
+    
+// 3초마다 자동으로 슬라이드가 넘어갑니다. 1초 = 1000
+  autoplay: {
+    delay: 3000,
+  },
+});
+</script>
+</html>

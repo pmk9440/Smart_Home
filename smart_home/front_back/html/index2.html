@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+  <title>hue</title>
+  <style>
+    body {
+      color: white;
+    }
+
+    table {
+      margin-top: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .swiper-container {
+      background-color: #00cc00;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      /* border-radius: 20px; */
+    }
+
+    .swiper-wrapper {
+      z-index: -1;
+    }
+
+    html,
+    body {
+      padding: 0px;
+      margin: 0px;
+      height: 100%;
+      /* overflow: hidden; */
+    }
+
+    .statebar {
+      width: 20%;
+      height: 3%;
+      margin: 4% auto;
+      background: linear-gradient(to left, #00cc00, #ff6600);
+      border-radius: 50px;
+      border: 1px solid;
+    }
+
+    #add:hover,
+    #out:hover {
+      color: orange;
+    }
+
+
+    #bottombar {
+      width: 100%;
+      height: 130px;
+      transition: all .35s;
+      padding-left: 10%;
+
+
+      /* background: #248ffa; */
+      /* margin-top: 0; */
+      /* z-index: 1; */
+    }
+
+    #section_1 {
+      width: 15%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.589);
+      color: black;
+      transition-duration: 0.4s;
+      float: left;
+    }
+
+    #section_1:active {
+      background-color: #555555;
+      color: white;
+    }
+
+    #section_2 {
+      width: 15%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.589);
+      color: black;
+      transition-duration: 0.4s;
+      float: left;
+      margin-left: 10px;
+    }
+
+    #section_2:active {
+      background-color: #555555;
+      color: white;
+    }
+
+    #section_3 {
+      width: 15%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.589);
+      color: black;
+      transition-duration: 0.4s;
+      float: left;
+      margin-left: 10px;
+    }
+
+    #section_3:active {
+      background-color: #555555;
+      color: white;
+    }
+
+    #section_4 {
+      width: 15%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.589);
+      color: black;
+      transition-duration: 0.4s;
+      float: left;
+      margin-right: 10px;
+    }
+
+    #section_4:active {
+      background-color: #555555;
+      color: white;
+    }
+
+    #section_5 {
+      width: 15%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.589);
+      color: black;
+      transition-duration: 0.4s;
+      float: left;
+      margin-left: 10px;
+    }
+
+    #section_5:active {
+      background-color: #555555;
+      color: white;
+    }
+
+  #button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    border-radius: 7px;
+    font-size: 14px;
+    padding: 5px 8px;
+    box-shadow: 2px 2px 2px #8c8c8c;
+    float: left;
+  }
+
+  #button1:active {
+    background-color: #555555;
+    color: white;
+  }
+
+  #button2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    width: 300px;
+    margin-bottom: 16px;
+    border-radius: 7px;
+    font-size: 14px;
+    padding: 5px 5px;
+    box-shadow: 2px 2px 2px #8c8c8c;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+  }
+
+  #button2:active {
+    background-color: #555555;
+    color: white;
+  }
+
+  #button3 {
+    background-color: white;
+    color: black;
+    border: 2px solid #0080ff;
+    border-radius: 7px;
+    font-size: 14px;
+    padding: 5px 8px;
+    box-shadow: 2px 2px 2px #8c8c8c;
+    float: right;
+  }
+
+  #button3:active {
+    background-color: #0080ff;
+    color: white;
+  }
+
+  #alarm_list {
+    margin-left: 32px;
+  }
+
+  #list2 {
+    margin-bottom: 8px;
+  }
+  </style>
+</head>
+
+<body>
+  <dialog id="alarm_controller" style="width: 300px; height: 300px; border-radius: 12px; position: relative;">
+    <input type="button" value="편집" id="button1" onclick="btn_edit()">
+    <input type="button" value="추가" id="button3" onclick = "btn_add()">
+    <p>
+      
+      <h2 style="font-weight:bold; text-align: center;">
+        알람리스트
+      </h2>
+    </p>
+    <div id="alarm_list">
+
+    </div>
+
+    <input type="button" value="확인" id="button2" onclick="btn_save()">
+  </dialog>
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper" onclick="navi()">
+
+      <!-- <div class="swiper-slide" id="" style="text-align: center; padding-top: 150px; font-size: 200%;">
+        <table width="500" height="350">
+          <th colspan="2" height="40" style="font-size: 150%;">알람</th>
+          <tr>
+            <td colspan="2" height="50" style="font-size: 60%; text-align: left;">
+              <i class="fas fa-trash-alt" onclick="alarm_out()" id="out" style="cursor:pointer;"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="/media/alarm.png" style="width: 200px; height: 180px;">
+            </td>
+            <td align="left" valign="top" style="font-size: 70%;">
+              <i class="fas fa-plus-circle" onclick="alarm_in()" id="add" style="cursor:pointer;">
+                알람 추가
+              </i><br>
+              <div id="alarm_data"></div><div id="alarm_data_out"></div>
+            </td>
+          </tr>
+        </table>
+      </div> -->
+
+
+      <!--메인화면-->
+      <div class="swiper-slide" id="home_color" style="padding-top: 150px">
+        <h1>
+          <i class="fas fa-home" style="font-size: 150%;">&nbsp;HOME</i>
+        </h1>
+        <br>
+        <p>
+          <i class="fas fa-thermometer-half" style="font-size: 500%;">&nbsp;
+            <span id="home_temperature"></span>
+          </i>
+        </p>
+        <br>
+        <p>
+          <i class="fas fa-tint" style="font-size: 500%;">&nbsp;
+            <span id="home_humidity">30%
+          </i>
+        </p>
+      </div>
+
+      <!--외부날씨-->
+      <div class="swiper-slide" id="weather_color" style="padding-top: 150px;">
+        <table width="35%">
+          <th colspan="2" height="40" style="font-size: 300%;">수원시</th>
+          <tr>
+            <td align="left" valign="bottom" style=" padding-right: 10px;font-size: 540%; font-weight: bolder;">
+              <span id="temperature"></span>
+            </td>
+            <td rowspan="3" id="weatherimage">
+            </td>
+          </tr>
+
+          <tr>
+            <td align="left" valign="middle" style="font-weight: bolder; font-size: 250%;">
+              <span id="sky"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="left" valign="top" style=" font-size: 200%;">
+              <span id="todaydate1"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 미세먼지 -->
+      <div class="swiper-slide" id="dust_color" style="text-align: center; padding-top: 150px;">
+        <table width="35%" >
+          <th colspan="2"  style="font-size: 300%;">수원시</th>
+          <tr>
+            <td colspan="2" height="10" style="font-size: 150%;"><span id="todaydate2"></td>
+          </tr>
+          <tr>
+            <td style="padding-top: 40px;">
+              <i id="emoji" style="font-size: 220%;"></i>
+            </td>
+            <td  style="padding-top: 40px;">
+              <span id="dust" style="font-size: 250%; font-weight: bolder; "></span><br>
+              <span id="condition" style="font-size: 200%;"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <div id="bottombar">
+      <div id="section_4" onclick="morning_controller()">
+        <i class="fas fa-sun" id="awake" style="font-size:80px; padding: 4%;"></i><br>
+        <span>기상</span>
+      </div>
+
+      <div id="section_1" onclick="out_controller()">
+        <i class="fas fa-sign-out-alt" id="hue1" style="font-size:80px; padding: 4%;"></i><br>
+        <span>외출</span> <span id="on_off1"></span>
+      </div>
+
+      <div id="section_2" onclick="in_controller()">
+        <i class="fas fa-sign-in-alt" id="hue2" style="font-size:80px; padding: 4%;"></i><br>
+        <span>복귀</span> <span id="on_off2"></span>
+      </div>
+
+      <div id="section_3" onclick="sleep_controller()">
+        <i class="fas fa-bed" id="sleep" style="font-size:80px; padding: 4%;"></i><br>
+        <span>취침</span>
+      </div>
+
+      
+
+      <div id="section_5" onclick="alarm_controller()">
+        <i class="far fa-clock" id="outside" style="font-size:80px; padding: 4%;"></i><br>
+        <span>알람</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+
+
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+<script>
+  var init_ws = new WebSocket("ws://13.209.35.11:8001");
+  var ws = new WebSocket("ws://13.209.35.11:8002");
+  var sendMessage;
+
+  var bottombar = document.getElementById("bottombar");
+  var section_1 = document.getElementById("section_1");
+  var section_2 = document.getElementById("section_2");
+  var section_3 = document.getElementById("section_3");
+  var section_4 = document.getElementById("section_4");
+
+  var alarm_list = document.getElementById("alarm_list");
+  var edit_cancle = true;
+  var delete_list = [];
+
+  var weathertype = null;
+  var sun = null;
+  var today = new Date();
+  var hour = today.getHours() +9;
+  var minute = today.getMinutes();
+  var init_minute = null;
+
+  var bar = false;
+  var bar_count = 0;
+
+  window.onload = function() {
+    // ws.onmessage = function (event) {
+    //   var msg = JSON.parse(event.data);
+
+    //   if (msg.data == "dust") {
+    //     console.log(msg.dust);
+    //     console.log(msg.condition);
+    //     document.getElementById("condition").innerHTML = msg.condition;
+    //     document.getElementById("dust").innerHTML = msg.dust;
+    //     if (msg.condition == "매우나쁨") {
+    //       document.getElementById("dust_color").style.background = "#e62e00";
+    //       document.getElementById("emoji").innerHTML = '<i class="far fa-tired"  style="font-size: 540%;"></i>';
+    //     } else if (msg.condition == "나쁨") {
+    //       document.getElementById("dust_color").style.background = "#ff6600";
+    //       document.getElementById("emoji").innerHTML = '<i class="far fa-angry"  style="font-size: 540%;"></i>';
+    //     } else if (msg.condition == "보통") {
+    //       document.getElementById("dust_color").style.background = "#00cc00 ";
+    //       document.getElementById("emoji").innerHTML = '<i class="far fa-smile"  style="font-size: 540%;"></i>';
+    //     } else if (msg.condition == "좋음") {
+    //       document.getElementById("dust_color").style.background = "#4da6ff ";
+    //       document.getElementById("emoji").innerHTML = '<i class="far fa-laugh-beam"  style="font-size: 540%;"></i>';
+    //     }
+    //   }
+    //   else if (msg.data == "weather") {
+    //     console.log(msg.temperature);
+    //     console.log(msg.sky);
+    //     console.log(msg.water_type);
+    //     weathertype = msg;
+
+    //     if (msg.time.includes("ERROR")) {
+    //       document.getElementById("temperature").innerHTML = msg.time;
+    //     }
+    //     else {
+    //       document.getElementById("temperature").innerHTML = msg.temperature;
+    //       document.getElementById("sky").innerHTML = msg.sky;
+    //     }
+    //     if (msg.sky == "구름없음" || msg.water_type =="해쨍쨍") {
+    //       document.getElementById("weather_color").style.background = "#ffdb4d";
+    //       document.getElementById("weatherimage").src = "/media/sun.png";
+    //     } else if (msg.sky == "흐림" || msg.sky == "구름많음") {
+    //       document.getElementById("weather_color").style.background = "#4F6C73";
+    //       document.getElementById("weatherimage").src = "/media/cloudcloud.png";
+    //     } else if (msg.sky == "눈") {
+    //       document.getElementById("weather_color").style.background = "#8ebef1";
+    //       document.getElementById("weatherimage").src = "/media/cloudsnow.png";
+    //     } else if (msg.sky == "비") {
+          
+    //       document.getElementById("weather_color").style.background = "#b3b3b3";
+    //       document.getElementById("weatherimage").src = "/media/cloudrain.png";
+    //     }
+    //   }
+    //   else if (msg.data == "temperature") {
+    //     console.log(msg.tem);
+    //     document.getElementById("home_temperature").innerHTML = msg.tem + "°C";
+    //     // document.getElementById("home_humidity").innerHTML = msg.hum + "%";
+    //     if (msg.tem > "30" || msg.hum > "80") {
+    //       //실내 나쁨
+    //       document.getElementById("home_color").style.background = "#ff6600";
+    //     } else if (msg.tem > "25" || msg.hum > "60") {
+    //       //실내 보통
+    //       document.getElementById("home_color").style.background = "#558000";
+    //     } else if (msg.tem > "20" || msg.hum > "50") {
+    //       //실내 좋음
+    //       document.getElementById("home_color").style.background = "#00cc00";
+    //     }
+    //   }
+    // }
+    init();
+  }
+
+  function navi() {
+    bar = !bar;
+    //bottombar 올라옴
+    if (bar == true) {
+      bottombar.style.marginTop = "-130px";
+    }
+    //bottombar 내려감
+    else if (bar == false) {
+      bottombar.style.marginTop = 0;
+    }
+  }
+
+  setInterval(() => {
+    bar_count++;
+    today = new Date();
+    hour = today.getHours();
+    minute = today.getMinutes();
+
+    if (hour >=24) {
+      hour -= 24;
+    }
+
+    if (minute < 10) {
+      minute = "0" + minute.toString();
+    }
+
+    var now = hour.toString() +minute.toString();
+
+    if (bar == true) {
+      if (bar_count > 20) {
+        bottombar.style.marginTop = 0;
+        bar = !bar;
+        bar_count = 0;
+      }
+    }
+    else {
+      bar_count = 0;
+    }
+
+    if (init_minute != minute) {
+      if (sun != null) {
+        console.log(sun);
+        console.log(now);
+        console.log(sun.sunrise)
+        console.log(sun.sunset)
+        if (parseInt(sun.sunrise) <= parseInt(now) && parseInt(now) <= parseInt(sun.sunset)) {
+          //해
+          // console.log("해");
+          if(weathertype.sky == "구름없음") {
+            document.getElementById("weather_color").style.background = "#ffdb4d";
+            // document.getElementById("weatherimage").src = "/media/sun.png";
+            document.getElementById("weatherimage").innerHTML = '<img src="/media/sun.png"/>';
+          } else if (weathertype.sky == "흐림" || weathertype.sky == "구름많음") {
+            document.getElementById("weather_color").style.background = "#4F6C73";
+            // document.getElementById("weatherimage").src = "/media/cloudcloud.png";
+            document.getElementById("weatherimage").innerHTML = '<img src="/media/cloudcloud.png"/>';
+          } else if (weathertype.water_type == "비") { 
+            document.getElementById("weather_color").style.background = "#b3b3b3";
+            // document.getElementById("weatherimage").src = "/media/cloudrain.png";
+            document.getElementById("weatherimage").innerHTML = '<img src="/media/cloudrain.png"/>';
+          }
+        }
+        else {
+          //달
+          // console.log("달");
+          document.getElementById("weather_color").style.background = "black";
+          document.getElementById("weatherimage").innerHTML = '<i class="far fa-moon" style="font-size: 1000%;"></i>';
+          if(weathertype.water_type == "비"){
+            document.getElementById("weather_color").style.background = "black";
+            // document.getElementById("weatherimage").src = "/media/cloudrain.png";
+            document.getElementById("weatherimage").innerHTML = '<img src="/media/cloudrain.png"/>';
+          }
+        }
+        init_minute = minute;
+      }
+    }
+  }, 100);
+
+
+  var hue1_count = 0;
+  var hue2_count = 0;
+  var sleep_count = 0;
+  var morning_count = 0;
+  var out_count = 0;
+
+
+  //커튼제어를 어떻게 할 것인가?? (고민중...)
+
+  function hue1_controller() {
+    //하단 네비 자동 내려가는거 시간 초기화
+    bar_count = 0;
+
+    console.log("여기에 hue1 제어");
+    hue1_count++;
+    if (hue1_count == 1) {
+
+      sendMessage = {
+        "data": "hue1",
+        "controller": "on"
+      }
+      ws.send(JSON.stringify(sendMessage));
+    } else {
+      hue1_count = 0;
+
+      sendMessage = {
+        "data": "hue1",
+        "controller": "off"
+      }
+      ws.send(JSON.stringify(sendMessage));
+    }
+  }
+
+  function hue2_controller() {
+    //하단 네비 자동 내려가는거 시간 초기화
+    bar_count = 0;
+
+    console.log("여기에 hue2 제어");
+    hue2_count++;
+    if (hue2_count == 1) {
+
+      sendMessage = {
+        "data": "hue2",
+        "controller": "on"
+      }
+      ws.send(JSON.stringify(sendMessage));
+    } else {
+      hue2_count = 0;
+
+      sendMessage = {
+        "data": "hue2",
+        "controller": "off"
+      }
+      ws.send(JSON.stringify(sendMessage));
+    }
+  }
+
+  function sleep_controller() {
+    //하단 네비 자동 내려가는거 시간 초기화
+    bar_count = 0;
+
+    console.log("여기에 취침 제어");
+    hue1_count = -1;
+    hue2_count = -1;
+
+    sendMessage = {
+      "data" : "motor",
+      "controller" : "off"
+    }
+    ws.send(JSON.stringify(sendMessage));
+
+    sendMessage = {
+      "data" : "sleep",
+      "controller" : "off"
+    }
+    ws.send(JSON.stringify(sendMessage));
+  }
+
+  function in_controller() {
+    //하단 네비 자동 내려가는거 시간 초기화
+    bar_count = 0;
+
+    console.log("여기에 기상 제어");
+    hue1_count = 0;
+    hue2_count = 0;
+
+    sendMessage = {
+      "data" : "motor",
+      "controller" : "on"
+    }
+    ws.send(JSON.stringify(sendMessage));
+
+    hue1_controller();
+    hue2_controller();
+  }
+
+  function out_controller() {
+    //하단 네비 자동 내려가는거 시간 초기화
+    bar_count = 0;
+
+    console.log("여기에 취침 제어");
+    hue1_count = -1;
+    hue2_count = -1;
+
+    sendMessage = {
+      "data" : "motor",
+      "controller" : "off"
+    }
+    ws.send(JSON.stringify(sendMessage));
+
+    hue1_controller();
+    hue2_controller();
+  }
+
+  function morning_controller() {
+    //하단 네비 자동 내려가는거 시간 초기화
+    bar_count = 0;
+
+    console.log("여기에 기상 제어");
+    hue1_count = 0;
+    hue2_count = 0;
+
+    sendMessage = {
+      "data" : "motor",
+      "controller" : "on"
+    }
+    ws.send(JSON.stringify(sendMessage));
+
+    hue1_controller();
+    hue2_controller();
+  }
+
+  var list = {
+    "data" : "alarm",
+    "alarm_list" : []
+  };
+
+  function alarm_controller() {
+    edit_cancle = false;
+    btn_edit();
+    document.getElementById("alarm_controller").showModal();
+    if (list.alarm_list.length == 0) {
+      alarm_list.innerHTML = "저장된 알람이 없습니다.\n"
+    }
+    else {
+      console.log(list);
+      document.getElementById("alarm_list").innerHTML = `<ol>`;
+
+      for (var i = 0; i<list.alarm_list.length ; i++) {
+        if (list.alarm_list[i].checked == true) {
+          document.getElementById("alarm_list").innerHTML += `<li id="list2">${list.alarm_list[i].time}<input type="checkbox" id="toggle${i}" checked = "checked" style="float: right; margin-right: 60px;"></li>`;
+        }
+        else {
+          document.getElementById("alarm_list").innerHTML += `<li id="list2">${list.alarm_list[i].time}<input type="checkbox" id="toggle${i}" style="float: right; margin-right: 60px;"></li>`;
+        }
+      }
+      document.getElementById("alarm_list").innerHTML += "</ol>"
+    }
+  }
+
+  function btn_add() {
+    var time = prompt("설정할 시간을 입력해주세요", "1630");
+
+    if (isNaN(time) == true) {
+      alert("숫자로 다시 입력해주세요");
+      return;
+    } 
+    else {
+      
+      if (time != null) {
+        console.log(time);
+        var temp = {
+          "time" : time,
+          "checked" : false,
+        }
+        list.alarm_list.push(temp);
+
+        list_order();
+        ws.send(JSON.stringify(list));
+      }
+      else {
+      }
+      
+    }
+
+    document.getElementById("alarm_controller").close();
+  }
+
+  function btn_save() {
+
+    if (list.alarm_list.length != 0) {
+      alarm_check();
+      console.log("send");
+      ws.send(JSON.stringify(list));
+    }
+    document.getElementById("alarm_controller").close();
+  }
+
+  function btn_edit() {
+    console.log(list);
+    edit_cancle = !edit_cancle;
+    
+    if (edit_cancle == false) {
+      delete_list = [];
+      document.getElementById("button1").value = "취소";
+      document.getElementById("alarm_list").innerHTML = "";
+      for (var i = 0; i<list.alarm_list.length ; i++) {
+        document.getElementById("alarm_list").innerHTML += `<div id="list2"><input type="checkbox" id="delete${i}" style="float: left; margin-right: 20px;">${list.alarm_list[i].time}</div>`;
+        
+        var temp = {
+          "id" : i,
+          "checked" : false
+        }
+        delete_list.push(temp);
+      }
+    }
+
+    else if (edit_cancle == true && document.getElementById("button1").value == "취소") {
+      console.log(delete_list);
+      document.getElementById("button1").value = "편집";
+      document.getElementById("alarm_list").innerHTML = `<ol>`;
+
+      for (var i = 0; i<list.alarm_list.length ; i++) {
+        if (list.alarm_list[i].checked == true) {
+          document.getElementById("alarm_list").innerHTML += `<li id="list2">${list.alarm_list[i].time}<input type="checkbox" id="toggle${i}" checked = "checked" style="float: right; margin-right: 60px;"></li>`;
+        }
+        else {
+          document.getElementById("alarm_list").innerHTML += `<li id="list2">${list.alarm_list[i].time}<input type="checkbox" id="toggle${i}" style="float: right; margin-right: 60px;"></li>`;
+        }
+      }
+      document.getElementById("alarm_list").innerHTML += "</ol>"
+    }
+
+    else if (edit_cancle == true && document.getElementById("button1").value == "삭제") {
+      var length = delete_list.length;
+      for (var i =0; i<length ; i) {
+        if (delete_list[i].checked == true) {
+          list.alarm_list.splice(i, 1);
+          delete_list.splice(i, 1);
+          length -= 1;
+        }
+        else {
+          i++;
+        }
+      }
+
+      delete_list = [];
+      ws.send(JSON.stringify(list));
+
+      document.getElementById("alarm_controller").close();
+    }
+  }
+
+  function alarm_check() {
+    if (document.getElementById("button1").value == "편집") {
+      for (var i =0; i<list.alarm_list.length ; i++) {
+        if (document.getElementById(`toggle${i}`).checked == true) {
+          list.alarm_list[i].checked = true;
+        }
+        else {
+          list.alarm_list[i].checked = false;
+        }
+      }
+    }
+    else {
+      document.getElementById("alarm_controller").close();
+    }
+  }
+
+  function list_order() {
+    for (var i =0; i<list.alarm_list.length-1 ; i++) {
+      for (var j=i+1 ; j<list.alarm_list.length ; j++) {
+        if (parseInt(list.alarm_list[i].time) > parseInt(list.alarm_list[j].time)) {
+          var temp = list.alarm_list[i];
+          list.alarm_list[i] = list.alarm_list[j];
+          list.alarm_list[j] = temp;
+        }
+      }
+    }
+  }
+
+  function alarm_out(){
+    document.getElementById("alarm_data_out").innerHTML = '<i class="fas fa-minus-circle"></i>'
+  }
+
+  // 알람 삭제 관련
+  setInterval(() => {
+    if (edit_cancle == false) {
+      var count =0;
+      for (var i =0; i<list.alarm_list.length ; i++) {
+        delete_list[i].checked = document.getElementById(`delete${i}`).checked;
+
+        if (document.getElementById(`delete${i}`).checked == true) {
+          document.getElementById("button1").value = "삭제";
+        }
+        else {
+          count++;
+        }
+
+        if (count == list.alarm_list.length) {
+          document.getElementById("button1").value = "취소";
+        }
+      }
+    }
+  }, 100);
+
+
+  function init() {
+    var mySwiper = new Swiper('.swiper-container', {
+      // 슬라이드를 버튼으로 움직일 수 있습니다.
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+      },
+
+      // 현재 페이지를 나타내는 스크롤이 생깁니다. 클릭하면 이동합니다.
+      // scrollbar: {
+      //     el: '.swiper-scrollbar',
+      //     draggable: true,
+      // },
+
+      // 3초마다 자동으로 슬라이드가 넘어갑니다. 1초 = 1000
+      autoplay: {
+          delay: 2000,
+          disableOnInteraction: false
+      },
+      speed:2000,
+    });
+  }
+
+  
+  var date = today.getDate();
+  var month = today.getMonth() + 1; //January is 0!
+  var year = today.getFullYear();
+  var day = today.getDay(); 
+
+  if (today.getDay() == "0") {
+    day = "일";
+  } else if (today.getDay() == "1") {
+    day = "월";
+  } else if (today.getDay() == "2") {
+    day = "화";
+  } else if (today.getDay() == "3") {
+    day = "수";
+  } else if (today.getDay() == "4") {
+    day = "목";
+  } else if (today.getDay() == "5") {
+    day = "금";
+  } else if (today.getDay() == "6") {
+    day = "토";
+  }
+
+  ttoday = month + '. ' + date + ' ' + day;
+  document.getElementById("todaydate1").innerHTML = ttoday;
+  document.getElementById("todaydate2").innerHTML = ttoday;
+
+  ws.onmessage = function (event) {
+    console.log(event.data);
+    var msg = JSON.parse(event.data);
+
+    if (msg.data == "dust") {
+      console.log(msg.dust);
+      console.log(msg.condition);
+      document.getElementById("condition").innerHTML = msg.condition;
+      document.getElementById("dust").innerHTML = msg.dust;
+      if (msg.condition == "매우나쁨") {
+        document.getElementById("dust_color").style.background = "#e62e00";
+        document.getElementById("emoji").innerHTML = '<i class="far fa-tired"  style="font-size: 540%;"></i>';
+      } else if (msg.condition == "나쁨") {
+        document.getElementById("dust_color").style.background = "#ff6600";
+        document.getElementById("emoji").innerHTML = '<i class="far fa-angry"  style="font-size: 540%;"></i>';
+      } else if (msg.condition == "보통") {
+        document.getElementById("dust_color").style.background = "#00cc00 ";
+        document.getElementById("emoji").innerHTML = '<i class="far fa-smile"  style="font-size: 540%;"></i>';
+      } else if (msg.condition == "좋음") {
+        document.getElementById("dust_color").style.background = "#4da6ff ";
+        document.getElementById("emoji").innerHTML = '<i class="far fa-laugh-beam"  style="font-size: 540%;"></i>';
+      }
+    }
+    else if (msg.data == "weather") {
+      console.log(msg.temperature);
+      console.log(msg.sky);
+      console.log(msg.water_type);
+      weathertype = msg;
+
+      if (msg.time.includes("ERROR")) {
+        document.getElementById("temperature").innerHTML = msg.time;
+      }
+      else {
+        document.getElementById("temperature").innerHTML = msg.temperature;
+        document.getElementById("sky").innerHTML = msg.sky;
+      }
+      // if (msg.sky == "구름없음" || msg.water_type =="해쨍쨍") {
+      //   document.getElementById("weather_color").style.background = "#ffdb4d";
+      //   document.getElementById("weatherimage").src = "/media/sun.png";
+      // } else if (msg.sky == "흐림" || msg.sky == "구름많음") {
+      //   document.getElementById("weather_color").style.background = "#4F6C73";
+      //   document.getElementById("weatherimage").src = "/media/cloudcloud.png";
+      // } else if (msg.sky == "눈") {
+      //   document.getElementById("weather_color").style.background = "#8ebef1";
+      //   document.getElementById("weatherimage").src = "/media/cloudsnow.png";
+      // } else if (msg.sky == "비") {
+        
+      //   document.getElementById("weather_color").style.background = "#b3b3b3";
+      //   document.getElementById("weatherimage").src = "/media/cloudrain.png";
+      // }
+    }
+    else if (msg.data == "temperature") {
+      console.log(msg.tem);
+      console.log(weathertype.temperature);
+      document.getElementById("home_temperature").innerHTML = msg.tem + "°C";
+      // document.getElementById("home_humidity").innerHTML = msg.hum + "%";
+      /*
+      if (msg.tem > "30" || msg.hum > "80") {
+        //실내 나쁨
+        document.getElementById("home_color").style.background = "#ff6600";
+      } else if (msg.tem > "25" || msg.hum > "60") {
+        //실내 보통
+        document.getElementById("home_color").style.background = "#558000";
+      } else if (msg.tem > "20" || msg.hum > "50") {
+        //실내 좋음
+        document.getElementById("home_color").style.background = "#00cc00";
+      }
+      */
+      
+      if(weathertype.temperature == "20°C"){
+        if(20 <= msg.tem && msg.tem <=21) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }
+        else if( 26 <= msg.tem && msg.tem <=27) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }else if(22 <= msg.tem && msg.tem <= 25){
+          //쾌적
+          document.getElementById("home_color").style.background = "#4da6ff";
+        }
+      }else if(weathertype.temperature == "21°C"){
+        if(21 <= msg.tem && msg.tem <=22) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }
+        else if(27 <= msg.tem && msg.tem <=28) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }else if(23 <= msg.tem && msg.tem <= 26){
+          //쾌적
+          document.getElementById("home_color").style.background = "#4da6ff";
+        }
+      }else if(weathertype.temperature == "22°C"){
+        if(21 <= msg.tem && msg.tem <=22) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }
+        else if(27 <= msg.tem && msg.tem <=28) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }else if(23 <= msg.tem && msg.tem <= 26){
+          //쾌적
+          document.getElementById("home_color").style.background = "#4da6ff";
+        }
+      }else if(weathertype.temperature == "23°C"){
+        if(21 <= msg.tem && msg.tem <=23) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }
+        else if(27 <= msg.tem && msg.tem <=28) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }else if(24 <= msg.tem && msg.tem <= 26){
+          //쾌적
+          document.getElementById("home_color").style.background = "#4da6ff";
+        }
+      }else if(weathertype.temperature == "24°C"){
+        if(22 <= msg.tem && msg.tem <=23) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }
+        else if(28 <= msg.tem && msg.tem <=29) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }else if(24 <= msg.tem && msg.tem <= 27){
+          //쾌적
+          document.getElementById("home_color").style.background = "#4da6ff";
+        }
+      }else if(weathertype.temperature == "25°C"){
+        if(22 <= msg.tem && msg.tem <=23) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }
+        else if(28 <= msg.tem && msg.tem <=29) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }else if(24 <= msg.tem && msg.tem <= 27){
+          //쾌적
+          document.getElementById("home_color").style.background = "#4da6ff";
+        }
+      }else if(weathertype.temperature == "26°C"){
+        if(22 <= msg.tem && msg.tem <=23) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }
+        else if(28 <= msg.tem && msg.tem <=29) {
+          //보통
+          document.getElementById("home_color").style.background = "#00cc00";
+        }else if(24 <= msg.tem && msg.tem <= 27){
+          //쾌적
+          document.getElementById("home_color").style.background = "#4da6ff";
+        }
+      } else {
+        //실내 불쾌
+        console.log("8");
+        document.getElementById("home_color").style.background = "#ff6600";
+      }
+
+      
+      // document.getElementById("home_humidity").innerHTML = msg.hum + "%";
+      /*
+      if (msg.tem > "30" || msg.hum > "80") {
+        //실내 나쁨
+        document.getElementById("home_color").style.background = "#ff6600";
+      } else if (msg.tem > "25" || msg.hum > "60") {
+        //실내 보통
+        document.getElementById("home_color").style.background = "#558000";
+      } else if (msg.tem > "20" || msg.hum > "50") {
+        //실내 좋음
+        document.getElementById("home_color").style.background = "#00cc00";
+      }
+      */
+    }
+    else if (msg.data == "sun") {
+      // console.log(msg.sunrise);
+      // console.log(msg.sunset);
+      sun = msg;
+    }
+    else if (msg.data == "hue1") {
+      console.log(msg.controller);
+      if (msg.controller == true) {
+        hue1_count = 1;
+      } else if (msg.controller == false) {
+        hue1_count = 0;
+      }
+    }
+    else if (msg.data == "hue2") {
+      console.log(msg.controller);
+      if (msg.controller == true) {
+        hue2_count = 1;
+      } else if (msg.controller == false) {
+        hue2_count = 0;
+      }
+    }
+    else if (msg.data == "alarm") {
+      list = msg;
+    }
+  }
+
+
+
+</script>
+
+</html>
